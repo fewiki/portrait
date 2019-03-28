@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta charset="utf-8" />
+		<link href="./css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./css/reset.css"/>
+		<link rel="stylesheet" href="./css/stuEvaluation.css">
+		<title>学生能力画像</title>
+	</head>
+	<body>
+		<!-- body start -->
+		<div class="header">
+			<div class="bg"></div>
+			<h1>学生能力画像</h1>
+			<div class="bg"></div>
+		</div>
+		<div class="content">
+			<!-- left slide -->
+			<div class="leftWrap">
+				<div class="chart1 chartWrap">
+					<h4><span>思想品德</span></h4>
+					<div class="behaving">
+						<dl class="score">
+							<dt>81</dt>
+							<dd>课堂表现</dd>
+						</dl>
+						<ul class="detail">
+							<li>
+								<span class="num">+<i>86</i>分</span>
+								<div class="progress">
+									<div class="value"></div>
+								</div>
+								<span class="state">良好</span>
+							</li>
+							<li>
+								<span class="num">-<i>5</i>分</span>
+								<div class="progress">
+									<div class="value"></div>
+								</div>
+								<span class="state">待改进</span>
+							</li>
+						</ul>
+					</div>
+					<dl class="attendence">
+						<dt>
+							<span>月度考勤</span>
+							<span>出勤</span>
+							<span>请假</span>
+							<span>缺勤</span>
+						</dt>
+						<dd>
+							<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+							<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+							<span></span><span></span><span></span><span></span><span></span><span></span>
+						</dd>
+					</dl>
+					<dl class="consume">
+						<dt>生活消费</dt>
+						<dd>生活过度节俭，平均日消费额低于年级平均水平15%</dd>
+					</dl>
+				</div>
+				<div class="chart2 chartWrap">
+					<h4><span>学业水平</span></h4>
+					<dl class="habit">
+						<dt>学习习惯</dt>
+						<dd>
+							<ul>
+								<li>
+									<div class="chart">
+										<canvas id="canvas1" width="80" height="80"></canvas>
+									</div>
+									<p>按计划学习</p>
+								</li>
+								<li>
+									<div class="chart">
+										<canvas id="canvas2" width="80" height="80"></canvas>
+									</div>
+									<p>专时专用</p>
+								</li>
+								<li>
+									<div class="chart">
+										<canvas id="canvas3" width="80" height="80"></canvas>
+									</div>
+									<p>独立钻研</p>
+								</li>
+								<li>
+									<div class="chart">
+										<canvas id="canvas4" width="80" height="80"></canvas>
+									</div>
+									<p>自学能力</p>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+					<dl class="read">
+						<dt><span>阅读情况</span><span>本人</span><span>年级平均</span></dt>
+						<dd>
+							<div id="chartRead" class="chartRead"></div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<!-- main content -->
+			<div class="mainCont">
+				<div class="total">
+					<h2>432</h2>
+					<p>综合评价</p>
+				</div>
+				<div class="mainImg">
+					<img src="./images/mainbg.png" width="100%" alt="">
+				</div>
+			</div>
+			<!-- right slide -->
+			<div class="rightWrap">
+				<div class="chart3 chartWrap">
+					<h4><span>身心健康</span></h4>
+					<ul>
+						<li>4.8/4.8</li>
+						<li>170</li>
+						<li>55</li>
+						<li>18.9</li>
+						<li>241</li>
+						<li>30</li>
+						<li>7.8</li>
+						<li>-1.4</li>
+					</ul>
+				</div>
+				<div class="chart4 chartWrap">
+					<h4><span>社会实践</span></h4>
+					<div id="practice" class="practice"></div>
+				</div>
+				<div class="chart5 chartWrap">
+					<h4><span>艺术素养</span></h4>
+					<div id="artistic" class="artistic"></div>
+				</div>
+			</div>
+		</div>
+		<!-- body end -->
+		<script src="./js/lib/jquery.js"></script>
+		<script src="./js/lib/bootstrap.min.js"></script>
+		<script src="./js/lib/echarts.min.js"></script>
+		<script src="./js/lib/cycle.js"></script>
+		<script>
+			$(function(){
+				function initChart(id,option){
+					var chart = echarts.init(document.getElementById(id));
+					chart.setOption(option);
+				}
+				drawCircle({
+					id: 'canvas1',
+					angle: 0.75,
+					color: '#4ddcad',
+					lineWidth: 3
+				});
+				drawCircle({
+					id: 'canvas2',
+					angle: 0.87,
+					color: '#feb282',
+					lineWidth: 3
+				});
+				drawCircle({
+					id: 'canvas3',
+					angle: 0.67,
+					color: '#8f3ddf',
+					lineWidth: 3
+				});
+				drawCircle({
+					id: 'canvas4',
+					angle: 0.49,
+					color: '#257efb',
+					lineWidth: 3
+				});
+
+
+				let option = {
+					title: {
+						text:''
+					},
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'shadow'
+						}
+					},
+					grid: {
+						left: '0',
+						right: '5%',
+						top:'10',
+						bottom: '10',
+						containLabel: true
+					},
+					// legend: {
+					// 	data: ['年级平均','本人']
+					// },
+					xAxis: [{
+						type: 'category',
+						axisTick: {
+							alignWithLabel: true
+						},
+						data: ['5日','10日','15日','20日','25日','30日'],
+						axisLine:{
+							show:true,
+						},
+						axisTick:{
+							show:false
+						},
+						axisLabel:{
+							color: '#fff'
+						},
+						axisLine:{
+							lineStyle:{
+								color:'#0267a9'
+							}
+						}
+					}],
+					yAxis: [{
+						type: 'value',
+						min: 0,
+						show:false
+					}, {
+						type: 'value',
+						min: 0,
+						position: 'left',
+						axisLine:{
+							show:false,
+						},
+						axisTick:{
+							show:false
+						},
+						axisLabel:{
+							color: '#fff'
+						},
+						splitLine:{
+							lineStyle:{
+								color:['#ccc'],
+								opacity: .1
+							}
+						}
+					}],
+					series: [{
+						name: '年级平均',
+						type: 'line',
+						stack: '总量',
+						label: {
+							normal: {
+								show: false
+							}
+						},
+						lineStyle: {
+							normal: {
+								width: 3,
+								shadowColor: 'rgba(0,0,0,0.4)',
+								shadowBlur: 10,
+								shadowOffsetY: 10
+							}
+						},
+						data: [240,180,200,120,200,130]
+						}, {
+						name: '本人',
+						type: 'bar',
+						barWidth: 16,
+						yAxisIndex: 1,
+						stack: '总量',
+						label: {
+							normal: {
+								show: false
+							}
+						},
+						itemStyle:{
+							normal: {
+								color: new echarts.graphic.LinearGradient(0, 0, 0, 1,[
+									{offset: 1, color: '#9e4eea'},
+									{offset: 0, color: '#28b1ff'}
+								])
+							},
+						},
+						data: [300,250,280,200,270,200]
+					}]
+				};
+				initChart('chartRead',option);
+
+				//社会实践
+				let option1 = {
+					title:{
+						text:'',
+					},
+					color:['#f8b551'],
+					tooltip : {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'shadow'
+						}
+					},
+					grid: {
+					left: '10%',
+					right: '10%',
+					bottom: '10',
+					containLabel: true
+					},
+					xAxis: {
+						type: 'category',
+						data: ['我是记者', '校园义工','金融投资', '职业考察'],
+						axisLine:{
+							show:true,
+						},
+						axisTick:{
+							show:false
+						},
+						axisLabel:{
+							color: '#fff'
+						},
+						axisLine:{
+							lineStyle:{
+								color:'#0267a9'
+							}
+						}
+					},
+					yAxis: {
+						type: 'value',
+						axisLabel:{
+							color: '#fff'
+						},
+						axisLine:{
+							lineStyle:{
+								color:'#0267a9'
+							}
+						},
+						splitLine:{
+							lineStyle:{
+								color:['#ccc'],
+								opacity: .1
+							}
+						}
+					},
+					series: [{
+						data: [20, 55,60,39],
+						type: 'bar',
+						barWidth: '40',
+						label: {
+							normal: {
+								show: true,
+								position: 'top',
+								color: '#28b1ff'
+							}
+						},
+						itemStyle:{
+							normal: {
+								color: new echarts.graphic.LinearGradient(0, 0, 0, 1,[
+									{offset: 0, color: '#28b1ff'},
+									{offset: 0.5, color: '#28b1ff'},
+									{offset: 1, color: 'rgba(40,177,255,0)'}
+								])
+							},
+						},
+					}]
+				};
+				initChart('practice',option1);
+
+				//艺术素养
+				let option2 = {
+					title: {
+						text: '',
+					},
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'shadow'
+						}
+					},
+					grid: {
+						left: '5%',
+						right: '0',
+						bottom: '0',
+						top:'20',
+						containLabel: true
+					},
+					xAxis: {
+						type: 'value',
+						boundaryGap: [0, 0.01],
+						show:false
+					},
+					yAxis: {
+						type: 'category',
+						data: ['书法','绘画','舞蹈','音乐'],
+						axisLine:{
+							show:false
+						},
+						axisTick:{
+							show: false
+						},
+						axisLabel:{
+							color: '#fff'
+						}
+					},
+					series: [{
+						type: 'bar',
+						barWidth: 12,
+						data: [182, 234, 280, 104],
+						label: {
+							normal: {
+								show: true,
+								position: 'right',
+								color: '#fff'
+							}
+						},
+						itemStyle:{
+							normal: {
+								color: new echarts.graphic.LinearGradient(0, 0, 1, 0,[
+									{offset: 1, color: '#9e4eea'},
+									// {offset: 0.5, color: '#28b1ff'},
+									{offset: 0, color: '#28b1ff'}
+								])
+							},
+						},
+					}]
+				};
+				initChart('artistic',option2);
+			})
+		</script>
+	</body>
+</html>

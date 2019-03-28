@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta charset="utf-8" />
+		<link href="./css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./css/reset.css"/>
+		<link rel="stylesheet" href="./css/teaEvaluation.css">
+		<title>老师能力画像</title>
+	</head>
+	<body>
+		<!-- body start -->
+		<div class="header">
+			<div class="bg"></div>
+			<h1>老师能力画像</h1>
+			<div class="bg"></div>
+		</div>
+		<div class="content">
+			<!-- left slide -->
+			<div class="leftWrap">
+				<div class="chart1 chartWrap">
+					<h4><span>过程性数据采集</span></h4>
+					<ul class="collection">
+						<li id="cycChart1" class="cycChart1"></li>
+						<li id="cycChart2" class="cycChart2"></li>
+						<li id="cycChart3" class="cycChart3"></li>
+						<li id="cycChart4" class="cycChart4"></li>
+						<li id="cycChart5" class="cycChart5"></li>
+					</ul>
+				</div>
+				<div class="chart2 chartWrap">
+					<h4><span>家校互动</span></h4>
+					<dl class="interact">
+						<dt>师生互动</dt>
+						<dd>
+							<ul>
+								<li>
+									<div class="chart">
+										<canvas id="teacanvas1" width="100" height="100"></canvas>
+									</div>
+								</li>
+								<li>
+									<span>90</span>
+									<p>有效(次/月)</p>
+								</li>
+								<li>
+									<span>100</span>
+									<p>一般(次/月)</p>
+								</li>
+								<li>
+									<span>20</span>
+									<p>无效(次/月)</p>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+					<dl class="communicate">
+						<dt><span>阅读情况</span><span>沟通人次</span><span>学科平均</span></dt>
+						<dd>
+							<div id="chartCommunicate" class="chartCommunicate"></div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<!-- main content -->
+			<div class="mainCont">
+				<div class="total">
+					<h2>432</h2>
+					<p>综合评价</p>
+				</div>
+				<!-- <div class="mainImg">
+					<img src="./images/mainbg.png" width="100%" alt="">
+				</div> -->
+			</div>
+			<!-- right slide -->
+			<div class="rightWrap">
+				<div class="chart3 chartWrap">
+					<h4><span>教学情况</span><i>本人情况</i><i>学科平均</i></h4>
+					<div id="teach" class="teach"></div>
+				</div>
+				<div class="chart4 chartWrap">
+					<h4><span>听课评课</span></h4>
+					<div class="listenWrap">
+						<dl>
+							<dt>总评分：<span>95</span>分</dt>
+							<dd>教学目的明确 <span>20分</span></dd>
+							<dd>教学思路清晰 <span>20分</span></dd>
+							<dd>课堂结构合理 <span>10分</span></dd>
+							<dd>教学工具运用 <span>20分</span></dd>
+							<dd>教学效果显著 <span>10分</span></dd>
+							<dd>教学资源建设 <span>15分</span></dd>
+						</dl>
+						<div id="listen" class="listen"></div>
+					</div>
+				</div>
+				<div class="chart5 chartWrap">
+					<h4><span>教研管理</span><i>本人情况</i><i>学科平均</i></h4>
+					<div id="research" class="research"></div>
+				</div>
+			</div>
+		</div>
+		<!-- body end -->
+		<script src="./js/lib/jquery.js"></script>
+		<script src="./js/lib/bootstrap.min.js"></script>
+		<script src="./js/lib/echarts.min.js"></script>
+		<script src="./js/lib/cycle.js"></script>
+		<script>
+			$(function(){
+				//初始化图表
+				function initChart(id,option){
+					var chart = echarts.init(document.getElementById(id));
+					chart.setOption(option);
+				}
+
+				//环形图绘制
+				function initCircleChart(id,{ title = '', subTitle = '', val1 = 25, val2 = 25, color='rgba(20,198,249,1)', val3 =
+				50 } = {}){
+					let chart = echarts.init(document.getElementById(id));
+					let option = {
+						// backgroundColor: '#000',
+						title: {
+							text: title,
+							subtext:subTitle,
+							textStyle: {
+								color: '#21c980',
+								fontSize: 20,
+								fontWeight: 'bold',
+							},
+							subtextStyle:{
+								color : '#00caff',
+							},
+							left: 'center',
+							bottom: '10%',
+							itemGap: 20,
+						},
+						series: [
+							{
+							// name: '数据',
+								type: 'pie',
+								startAngle: 315,
+								radius: ['70%', '85%'],
+								legendHoverLink: false,
+								hoverAnimation: false,
+								avoidLabelOverlap: false,
+								label: {
+								normal: {
+									show: false,
+									position: 'center'
+								},
+								emphasis: {
+									show: true,
+									textStyle: {
+										fontSize: '30',
+										fontWeight: 'bold'
+									}
+								}
+								},
+								labelLine: {
+									normal: {
+										show: false
+									}
+								},
+								data: [{
+										value: val1,
+										itemStyle: {
+											normal: {
+												color: "rgba(0,0,0,0)"
+											}
+										}
+									},
+									{
+										value: val2,
+										itemStyle: {
+											normal: {
+												color: color
+											}
+										}
+
+									},
+									{
+										value: val3,
+										itemStyle: {
+											normal: {
+												color: '#262795'
+											}
+										}
+									}
+
+								]
+							}
+						]
+					};
+					chart.setOption(option);
+				}
+				//绘制环形图
+				drawCircle({
+					id: 'teacanvas1',
+					angle: 0.75,
+					unitTxt: '%',
+					color: '#21c980',
+					lineWidth: 3
+				});
+				//过程性数据采集
+				initCircleChart('cycChart1',{
+					title: '86次',
+					subTitle: '课堂表现',
+					color: '#9a9afe',
+					val2: 57,
+					val3: 18,
+				});
+				initCircleChart('cycChart2',{
+					title: '92次',
+					subTitle: '学生考勤',
+					color: '#21c980',
+					val2: 68,
+					val3: 7,
+				});
+				initCircleChart('cycChart3',{
+					title: '83次',
+					subTitle: '学生成绩',
+					color: '#ffaf59',
+					val2: 53,
+					val3: 22,
+				});
+				initCircleChart('cycChart4',{
+					title: '79次',
+					subTitle: '学生健康',
+					color:'#ffa286',
+					val2: 45,
+					val3: 30,
+				});
+				initCircleChart('cycChart5',{
+					title: '82次',
+					subTitle: '学生生活',
+					color: '#4f7dff',
+					val2: 54,
+					val3: 21,
+				});
+				//家校沟通
+				let option = {
+					title: {
+						text:''
+					},
+					tooltip : {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'none'
+						}
+					},
+					grid: {
+						left: '5%',
+						right: '5%',
+						top:'10',
+						bottom: '10',
+						containLabel: true
+					},
+					xAxis: [{
+						type: 'category',
+						axisTick: {
+							alignWithLabel: true
+						},
+						boundaryGap : false,
+						data: ['5日','10日','15日','20日','25日','30日'],
+						axisLine:{
+							show:true,
+							lineStyle:{
+								color:'#216dfd'
+							}
+						},
+						axisLabel:{
+							color: '#fff'
+						},
+					}],
+					yAxis: [{
+						type: 'value',
+						axisLine:{
+							show:true,
+							lineStyle:{
+								color:'#216dfd'
+							}
+						},
+						splitLine:{
+							show:false
+						},
+						axisLabel:{
+							color: '#fff'
+						}
+					}],
+					series: [{
+						name: '沟通人次',
+						type: 'line',
+						lineStyle:{
+							normal:{
+								color: '#dec888',
+								width:3
+							}
+							
+						},
+						smooth: true,
+						symbol: 'circle',
+						symbolSize: 0,
+						data:[120, 132, 101, 134, 90, 230, 210],
+						}, {
+						name: '学科平均',
+						type:'line',
+						smooth: true,
+						symbol: 'circle',
+						symbolSize: 0,
+						areaStyle: {},
+						lineStyle:{
+							normal:{
+								color: '#5ab3ff',
+								width:3
+							}
+						},
+						areaStyle: {
+							normal: {
+								opacity: 0.5
+							}
+						},
+						data:[220, 182, 191, 234, 290, 330, 310],
+					}]
+				};
+				initChart('chartCommunicate',option);
+
+				//教学情况
+				let option1 = {
+					color:['#a96bf8','#6b95f2'],
+					title: {
+						text:''
+					},
+					tooltip : {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'shadow'
+						}
+					},
+					xAxis: {
+						type: 'category',
+						data: ['课例数', '授课数', '资源建设数'],
+						axisLabel:{
+							color: '#6e69b2'
+						}
+					},
+					yAxis: {
+						type: 'value',
+						axisLine:{
+							show:true
+						},
+						axisTick:{
+							show:false
+						},
+						axisLabel:{
+							color: '#fff'
+						},
+						splitLine:{
+							lineStyle:{
+								color:['#ccc'],
+								opacity: .1
+							}
+						},
+						axisLabel:{
+							color: '#6e69b2'
+						}
+					},
+					series: [{
+						data: [120, 200, 150],
+						type: 'bar',
+						barWidth: 20,
+						label: {
+							normal: {
+								show: true,
+								position: 'top',
+								color: '#c385fe'
+							}
+						},
+					},{
+						data: [90, 120, 180],
+						type: 'bar',
+						barWidth: 20,
+						label: {
+							normal: {
+								show: true,
+								position: 'top',
+								color: '#77a0f0'
+							}
+						},
+					}]
+				}
+				initChart('teach',option1);
+
+				//听课评课
+				let option2 = {
+					title: {
+						text: ''
+					},
+					radar: {
+						radius: '60%' ,
+						splitArea:{
+							areaStyle:{
+								color:['rgba(250,250,250,0.1)']
+							}
+						},
+						indicator: [
+							{ name: '教学资源管理', max: 100},
+							{ name: '教学效果显著', max: 100},
+							{ name: '教学工具运用', max: 100},
+							{ name: '课堂结构合理', max: 100},
+							{ name: '教学思路清晰', max: 100},
+							{ name: '教学目标明确', max: 100}
+						]
+					},
+					series: [{
+						type: 'radar',
+						data : [
+							{
+								value : [50, 20, 30, 45, 75, 20],
+								areaStyle: {
+									normal: {
+										opacity: 0.9,
+										color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+											{
+												color: '#B8D3E4',
+												offset: 0
+											},
+											{
+												color: '#72ACD1',
+												offset: 1
+											}
+										])
+									}
+								}
+							}
+						]
+					}]
+				};
+				initChart('listen',option2);
+				//教研管理
+				let option3 = {
+					color:['#0080df','#00c4f5'],
+					title: {
+						text:''
+					},
+					tooltip : {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'shadow'
+						}
+					},
+					grid: {
+						left: '5%',
+						right: '5%',
+						top:'30',
+						bottom: '0',
+						containLabel: true
+					},
+					xAxis: {
+						type: 'category',
+						data: ['教学评价', '教学反思', '教研课题','教研活动','集体备课'],
+						axisLabel:{
+							color: '#fff'
+						},
+						axisLine:{
+							show:true,
+							lineStyle:{
+								color:'#102562'
+							}
+						},
+						axisTick:{
+							show:false
+						},
+					},
+					yAxis: {
+						type: 'value',
+						axisLine:{
+							show:false
+						},
+						axisTick:{
+							show:false
+						},
+						axisLabel:{
+							color: '#fff'
+						},
+						splitLine:{
+							lineStyle:{
+								color:['#ccc'],
+								opacity: .1
+							}
+						},
+						axisLabel:{
+							color: '#fff'
+						}
+					},
+					series: [{
+						data: [120, 200, 150, 60, 110],
+						type: 'bar',
+						barWidth: 20,
+						label: {
+							normal: {
+								show: true,
+								position: 'top',
+								color: '#0080df'
+							}
+						},
+					},{
+						data: [90, 120, 180, 90, 200],
+						type: 'bar',
+						barWidth: 20,
+						label: {
+							normal: {
+								show: true,
+								position: 'top',
+								color: '#00c4f5'
+							}
+						},
+					}]
+				}
+				initChart('research',option3);
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,381 @@
+body {
+  min-width: 1400px;
+  overflow: auto;
+  background: url('../images/teaBodybg.jpg') no-repeat center 0;
+  font-size: 16px;
+  min-height: 100%;
+}
+body p {
+  margin: 0;
+}
+body ul {
+  list-style: none;
+}
+body .header {
+  display: flex;
+  align-items: top;
+}
+body .header .bg {
+  width: calc(50% - 423px);
+  height: 62px;
+  background: url('../images/headerbg.png') repeat-x right top 2px;
+}
+body .header h1 {
+  margin: 0;
+  padding-top: 10px;
+  height: 62px;
+  width: 845px;
+  font-size: 28px;
+  background: url('../images/logobg.png') no-repeat center center;
+  text-align: center;
+  color: #2acaff;
+  font-weight: 700;
+}
+body .content {
+  margin-top: 30px;
+  padding: 0 12px;
+  display: flex;
+}
+body .content .mainCont {
+  width: 100%;
+  height: 945px;
+  position: relative;
+  flex: 1;
+}
+body .content .mainCont .total {
+  margin: 0 auto;
+  padding: 113px;
+  width: 365px;
+  height: 365px;
+  background: url('../images/totalbg.png') no-repeat center center;
+}
+@-webkit-keyframes haha1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+body .content .mainCont .total h2 {
+  margin: 30px 0 0 0;
+  color: #ffd200;
+  font-size: 54px;
+  text-align: center;
+}
+body .content .mainCont .total p {
+  text-align: center;
+  font-size: 17px;
+  color: #fff;
+}
+body .content .mainCont .mainImg {
+  position: relative;
+  top: -200px;
+}
+@media screen and (max-width: 1400px) {
+  body .content .mainCont .mainImg {
+    top: 0;
+  }
+}
+body .content .leftWrap {
+  width: 516px;
+}
+body .content .leftWrap .chartWrap h4 {
+  padding-top: 16px;
+  height: 52px;
+  border-bottom: 1px solid #0267a9;
+}
+body .content .leftWrap .chartWrap h4 span {
+  padding-bottom: 10px;
+  font-size: 20px;
+  color: #fff;
+  border-bottom: 2px solid #0267a9;
+}
+body .content .leftWrap .chartWrap.chart1 {
+  height: 360px;
+  padding: 0 26px 0 24px;
+  width: 100%;
+  background: url('../images/teaChart1.png') no-repeat center center;
+  background-size: 516px 360px;
+}
+body .content .leftWrap .chartWrap.chart1 .collection {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+body .content .leftWrap .chartWrap.chart1 .collection li {
+  margin-top: 10px;
+  height: 126px;
+  width: 154px;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence {
+  border-bottom: 1px solid #0267a9;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dt {
+  padding: 6px 0;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dt span {
+  color: #a2a1ad;
+  font-weight: normal;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dt span:before {
+  content: '●';
+  padding: 0 3px;
+  font-size: 12px;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dt span:nth-child(1) {
+  margin-right: 12px;
+  font-size: 20px;
+  color: #fff;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dt span:nth-child(1):before {
+  padding: 0;
+  content: '';
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dt span:nth-child(2):before {
+  color: #00a6fe;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dt span:nth-child(3):before {
+  color: #05c6cf;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dt span:nth-child(4):before {
+  color: #ff0c00;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dd {
+  padding-bottom: 7px;
+  font-size: 0;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dd span {
+  display: inline-block;
+  margin: 7px 0 7px 8px;
+  height: 34px;
+  width: 16px;
+  background: url('../images/icon_p1.png') no-repeat center center;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dd span.vacate {
+  background: url('../images/icon_p2.png') no-repeat center center;
+}
+body .content .leftWrap .chartWrap.chart1 .attendence dd span.absence {
+  background: url('../images/icon_p3.png') no-repeat center center;
+}
+body .content .leftWrap .chartWrap.chart1 .consume {
+  color: #fff;
+}
+body .content .leftWrap .chartWrap.chart1 .consume dt {
+  padding: 5px 0;
+  font-weight: normal;
+  font-size: 20px;
+}
+body .content .leftWrap .chartWrap.chart1 .consume dd {
+  line-height: 1.2;
+}
+body .content .leftWrap .chartWrap.chart2 {
+  margin-top: 30px;
+  height: 477px;
+  width: 100%;
+  padding: 14px 26px 0 24px;
+  background: url('../images/teaChart2.png') no-repeat center center;
+  background-size: 516px 477px;
+}
+body .content .leftWrap .chartWrap.chart2 .interact dt {
+  padding: 16px 0 12px 30px;
+  background: url('../images/icon_hd.png') no-repeat left top 16px;
+  font-size: 18px;
+  color: #fff;
+  font-weight: normal;
+}
+body .content .leftWrap .chartWrap.chart2 .interact dd {
+  margin-bottom: 10px;
+}
+body .content .leftWrap .chartWrap.chart2 .interact dd ul {
+  display: flex;
+}
+body .content .leftWrap .chartWrap.chart2 .interact dd ul li {
+  flex: 1;
+  padding-top: 5px;
+}
+body .content .leftWrap .chartWrap.chart2 .interact dd ul li .chart {
+  height: 100px;
+  text-align: center;
+}
+body .content .leftWrap .chartWrap.chart2 .interact dd ul li:not(:nth-child(1)) {
+  padding: 0 18px;
+  position: relative;
+  text-align: center;
+  padding-top: 30px;
+  background: url('../images/bg_teahd.png') no-repeat center top 10px;
+}
+body .content .leftWrap .chartWrap.chart2 .interact dd ul li:not(:nth-child(1)) p {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+}
+body .content .leftWrap .chartWrap.chart2 .interact dd ul li:not(:nth-child(1)) span {
+  font-size: 24px;
+  font-weight: 700;
+  color: #07f8ec;
+}
+body .content .leftWrap .chartWrap.chart2 .communicate dt {
+  padding: 20px 0 12px 30px;
+  background: url('../images/icon_read.png') no-repeat left top 21px;
+  color: #fff;
+  font-weight: normal;
+}
+body .content .leftWrap .chartWrap.chart2 .communicate dt span:nth-child(1) {
+  font-size: 18px;
+}
+body .content .leftWrap .chartWrap.chart2 .communicate dt span:nth-child(2) {
+  margin-left: 14px;
+  padding-left: 14px;
+  color: #a2a1ad;
+}
+body .content .leftWrap .chartWrap.chart2 .communicate dt span:nth-child(2)::before {
+  content: '●';
+  padding-right: 6px;
+  font-size: 20px;
+  color: #dec888;
+}
+body .content .leftWrap .chartWrap.chart2 .communicate dt span:nth-child(3) {
+  margin-left: 14px;
+  padding-left: 14px;
+  color: #a2a1ad;
+}
+body .content .leftWrap .chartWrap.chart2 .communicate dt span:nth-child(3)::before {
+  content: '●';
+  padding-right: 6px;
+  font-size: 20px;
+  color: #5ab3ff;
+}
+body .content .leftWrap .chartWrap.chart2 .communicate dd .chartCommunicate {
+  height: 160px;
+  width: 100%;
+}
+body .content .rightWrap {
+  width: 518px;
+}
+body .content .rightWrap .chartWrap {
+  width: 100%;
+}
+body .content .rightWrap .chartWrap h4 {
+  padding-top: 16px;
+  height: 52px;
+  border-bottom: 1px solid #0267a9;
+}
+body .content .rightWrap .chartWrap h4 span {
+  padding-bottom: 10px;
+  font-size: 20px;
+  color: #fff;
+  border-bottom: 2px solid #0267a9;
+}
+body .content .rightWrap .chartWrap.chart3 {
+  padding: 0 24px;
+  height: 278px;
+  width: 100%;
+  background: url('../images/teaChart3.png') no-repeat center center;
+}
+body .content .rightWrap .chartWrap.chart3 h4 i {
+  font-style: normal;
+  color: #a2a1ad;
+}
+body .content .rightWrap .chartWrap.chart3 h4 i:nth-child(2) {
+  margin-left: 10px;
+}
+body .content .rightWrap .chartWrap.chart3 h4 i:nth-child(2):before {
+  content: '●';
+  padding-right: 4px;
+  font-size: 20px;
+  color: #a96bf8;
+}
+body .content .rightWrap .chartWrap.chart3 h4 i:nth-child(3) {
+  margin-left: 6px;
+}
+body .content .rightWrap .chartWrap.chart3 h4 i:nth-child(3):before {
+  content: '●';
+  padding-right: 4px;
+  font-size: 20px;
+  color: #6b95f2;
+}
+body .content .rightWrap .chartWrap.chart3 .teach {
+  height: 216px;
+}
+body .content .rightWrap .chartWrap.chart4 {
+  padding: 0 0 0 24px;
+  margin-top: 30px;
+  height: 332px;
+  width: 100%;
+  background: url('../images/teaChart4.png') no-repeat center center;
+}
+body .content .rightWrap .chartWrap.chart4 h4 {
+  width: 470px;
+}
+body .content .rightWrap .chartWrap.chart4 .listenWrap {
+  display: flex;
+}
+body .content .rightWrap .chartWrap.chart4 .listenWrap dl {
+  flex: 0 0 164px;
+  padding-left: 10px;
+}
+body .content .rightWrap .chartWrap.chart4 .listenWrap dl dt {
+  padding: 20px 0 10px;
+  font-size: 18px;
+  font-weight: normal;
+  color: #fdca00;
+}
+body .content .rightWrap .chartWrap.chart4 .listenWrap dl dd {
+  padding: 6px 0;
+  color: #fff;
+  font-size: 16px;
+}
+body .content .rightWrap .chartWrap.chart4 .listenWrap dl dd span {
+  color: #fdca00;
+}
+body .content .rightWrap .chartWrap.chart4 .listenWrap .listen {
+  flex: 1;
+  height: 270px;
+}
+body .content .rightWrap .chartWrap.chart5 {
+  padding: 0 24px;
+  margin-top: 30px;
+  height: 202px;
+  width: 100%;
+  background: url('../images/teaChart5.png') no-repeat center center;
+}
+body .content .rightWrap .chartWrap.chart5 h4 i {
+  font-style: normal;
+  color: #a2a1ad;
+}
+body .content .rightWrap .chartWrap.chart5 h4 i:nth-child(2) {
+  margin-left: 10px;
+}
+body .content .rightWrap .chartWrap.chart5 h4 i:nth-child(2):before {
+  content: '●';
+  padding-right: 4px;
+  font-size: 20px;
+  color: #0080df;
+}
+body .content .rightWrap .chartWrap.chart5 h4 i:nth-child(3) {
+  margin-left: 6px;
+}
+body .content .rightWrap .chartWrap.chart5 h4 i:nth-child(3):before {
+  content: '●';
+  padding-right: 4px;
+  font-size: 20px;
+  color: #00c4f5;
+}
+body .content .rightWrap .chartWrap.chart5 .research {
+  width: 100%;
+  height: 130px;
+}
